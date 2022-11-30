@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/python3
 import subprocess
 
 expectedUsers = ["kali","bigbee","smolbee","swolbee","jimbee","derbee","gabee"] # briefing packet users
