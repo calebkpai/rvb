@@ -5,7 +5,7 @@ expectedUsers = ["kali","bigbee","smolbee","swolbee","jimbee","derbee","gabee"] 
 users = [] # empty array to hold user names from box
 
 subprocess.run(["touch","userList.txt"]) # creates textfile "userList.txt"
-subprocess.run(["awk","F:","'$3",">=","1000","&&","$1","!=","nobody","{print $1}'","/etc/passwd"]) # outputs users on machine and copies output into "userList.txt"
+subprocess.run(["awk","-F:","'$3",">=","1000","&&","$1","!=","nobody","{print $1}'","/etc/passwd"]) # outputs users on machine and copies output into "userList.txt"
 
 
 with open("userList.txt") as file: # inputs each name line by line into the user array
