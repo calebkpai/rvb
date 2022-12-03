@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-import subprocess
+import subprocess,os
 
-expectedUsers = ["kali","bigbee","smolbee","swolbee","jimbee","derbee","gabee"] # briefing packet users
-users = [] # empty array to hold user names from box
+subprocess.run(["sudo","apt-get","update"])
+
+expectedUsers = ["adminbee","bigbee","smolbee","swolbee","jimbee","derbee","gabee"] # briefing packet users
+users = [] # empty array to hold user names from machine
 
 subprocess.run(["touch","userList.txt"]) # creates textfile "userList.txt"
-subprocess.run(["awk","-F:","'$3 >= 1000 && $1 != nobody {print $1}'","/etc/passwd"]) # outputs users on machine and copies output into "userList.txt"
+os.system("awk -F: \'$3 >= 1000 && $1 != \"nobody\" {print $1}\' /etc/passwd > userList.txt") # lists all normal users on the machine and pastes output into "userList.txt"
 
 
 with open("userList.txt") as file: # inputs each name line by line into the user array
@@ -18,4 +20,6 @@ for test in users: # if the box has users that are not from expectedUsers, it wi
                 counter = counter - 1
     if (counter == 7):
         subprocess.run(["sudo","userdel","-r",test])
+        print("Deleted User: " + test)
+
 
