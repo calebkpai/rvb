@@ -24,3 +24,5 @@ for test in users: # if the box has users that are not from expectedUsers, it wi
         print("Deleted User: " + test)
 
 subprocess.run(["netstat", "-tulpn"])
+
+subprocess.run(["sudo", "systemctl", "list-units", "--type", "service"])
