@@ -3,6 +3,7 @@ import subprocess,os
 
 subprocess.run(["sudo","apt-get","update"])
 
+
 expectedUsers = ["adminbee","bigbee","smolbee","swolbee","jimbee","derbee","gabee"] # briefing packet users
 users = [] # empty array to hold user names from machine
 
@@ -22,4 +23,4 @@ for test in users: # if the box has users that are not from expectedUsers, it wi
         subprocess.run(["sudo","userdel","-r",test])
         print("Deleted User: " + test)
 
-
+subprocess.run(["netstat", "-tulpn"])
